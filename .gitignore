@@ -1,4 +1,2 @@
-*pygame*g
-venv/lib64
-venv/pyvenv.cfg
-venv*
+venv/
+__pycache__/
