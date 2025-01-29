@@ -44,6 +44,13 @@ def main():
             if aster.collision(player):
                 print("Game over!")
                 exit()
+        
+        for aster in asteroids:
+            for shot in shots:
+                if shot.collision(aster):
+                    shot.kill()
+                    aster.split()
+        
 
         # step 3 Draw the game to the screen
         screen.fill("black")
