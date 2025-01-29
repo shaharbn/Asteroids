@@ -13,9 +13,13 @@ def main():
     #delta time berwin drawing the last game state
     time = pygame.time.Clock()
     dt = 0
+    # groups of objects
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
     # the gui
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     #player object
+    Player.containers = (updatable, drawable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     # game loop
     while True:
@@ -27,13 +31,13 @@ def main():
         # step 1 user input
             
         # step 2 update world
-        player.update(dt)
+        for up in updatable:
+            up.update(dt)
 
         # step 3 Draw the game to the screen
         screen.fill("black")
-
-        player.draw(screen)
-
+        for dr in drawable:
+            dr.draw(screen)
 
         # refrash the screen last comand of step 3
         pygame.display.flip()
