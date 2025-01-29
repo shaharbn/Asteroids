@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from player import *
 
 def main():
     print("Starting asteroids!")
@@ -14,15 +15,25 @@ def main():
     dt = 0
     # the gui
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    #player object
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     # game loop
     while True:
         # make the exit (X) btn on the gui working
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+            
+        # step 1 user input
+            
+        # step 2 update world
+        player.update(dt)
 
         # step 3 Draw the game to the screen
         screen.fill("black")
+
+        player.draw(screen)
+
 
         # refrash the screen last comand of step 3
         pygame.display.flip()
